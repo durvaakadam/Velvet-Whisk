@@ -1,0 +1,334 @@
+
+body {
+    margin: 0;
+    margin-top: 40px;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    height: 700px;
+  }
+  
+  /* Header Styles */
+ /* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 40px;
+    background: linear-gradient(90deg, #333, #444);
+    color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    animation: slideInFromTop 0.6s ease-out forwards;
+}
+
+/* Header Div Animation */
+header div {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    opacity: 0; /* Hidden initially */
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.3s; /* Slight delay for staggered effect */
+}
+
+header div:hover {
+    color: #ff94b0;
+    transition: color 0.3s ease-in-out, transform 0.2s;
+    transform: scale(1.1); /* Slight pop effect */
+}
+
+/* Navigation Menu Animation */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s; /* Staggered delay for menu items */
+}
+
+/* Home Button */
+.home-button {
+    background-color: #cf9090;
+    border: none;
+    padding: 3px 20px;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(255, 94, 133, 0.5);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.6s; /* Staggered for better timing */
+}
+
+.home-button:hover {
+    background-color: #ff668a;
+    transform: scale(1.05);
+}
+
+.home-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 4px rgba(255, 94, 133, 0.3);
+}
+
+.home-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 148, 176, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    header div {
+        font-size: 1.5rem;
+    }
+
+    .home-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animations */
+@keyframes slideInFromTop {
+    from {
+        top: -60px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.carousel{
+    width: 100vw;
+    height: 107vh; /* 107 */
+    position: relative;
+    overflow: hidden;
+    margin-top: -50px;
+}
+
+.list{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.list div {
+    background-color: var(--background); /* Use the variable here */
+    transition: background-color 0.5s;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+
+
+
+.item img.fruit {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5; /* Lower than content */
+}
+
+.item .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 10rem; /* Adjusted to avoid overflow */
+    color: #eee;
+    font-weight: bold;
+    font-family: system-ui;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 5; /* Behind the can */
+    opacity: 1; /* Ensure it's visible */
+    transition: color 0.5s, opacity 0.5s;
+}
+
+.item.active{
+    display: block;
+}
+.item.hidden{
+    display: block;
+    pointer-events: none;
+    background-color: transparent;
+    z-index: 1;
+}
+
+
+#prev,
+#next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #eee9;
+    background-color: #eee5;
+    color: #eee;
+    font-size: x-large;
+    font-family: monospace;
+    cursor: pointer;
+    z-index: 15;
+}
+#prev{
+    left: 20px;
+}
+#next{
+    right: 20px;
+}
+
+
+@keyframes toActive{
+    from{
+        top: 100%;
+        opacity: 0;
+    }
+}
+@keyframes toOut{
+    from{
+        top: 50%;
+        opacity: 1;
+    }
+}
+.item.active img.fruit{
+    animation: toActive 0.5s ease-in-out 1;
+}
+.item.hidden img.fruit{
+    animation: toOut 0.8s ease-in-out 1;
+    top: -100%;
+    opacity: 0;
+}
+.item.active .content{
+    animation: toActive 0.8s ease-in-out 1;
+}
+.item.hidden .content{
+    opacity: 0;
+}
+
+
+.carousel.right .item.active img.fruit{
+    animation: toActivePrev 0.5s ease-in-out 1;
+}
+.carousel.right .item.hidden img.fruit{
+    animation: toOut 0.8s ease-in-out 1;
+    top: 100%;
+    opacity: 0;
+}
+.carousel.right .item.active .content{
+    animation: toActivePrev 0.8s ease-in-out 1;
+}
+
+
+@keyframes toActivePrev{
+    from{
+        top: 0;
+        opacity: 0;
+    }
+}
+
+:root{
+    --width-mockup: calc(371px / 1.5);
+    --height-mockup: calc(673px / 1.5);
+}
+
+.mockup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    --left: 0%;
+    transform: translate(-50%, -50%);
+    height: var(--height-mockup);
+    width: var(--width-mockup);
+    background: 
+        url('mockup.png')  0 0 no-repeat, 
+        url('listsoda1.png') var(--left) 0;
+    background-size: auto 100%;
+    background-blend-mode: multiply;
+    -webkit-mask-image: url('mockup.png');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: auto 100%;
+    transition: background 0.5s ease-in-out;
+}
+
+.leaves{
+    position: absolute;
+    width: 1200px;
+    height: 1200px;
+    background-image: url('splash.png');
+    background-size: 100%;
+    top: calc((55% - (var(--height-mockup) / 1)));
+    left: calc((2% + (var(--width-mockup) / 1)));
+}
+.shadow{
+    width: var(--width-mockup);
+    height: 100px;
+    background-color: #0008;
+    border-radius: 50%;
+    position: absolute;
+    top:  calc((50% + (var(--height-mockup) / 2)));
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(20px);
+}
+@media screen and (max-width: 768px) {
+    .item .content{
+        transform: translate(-50%, -50%) scale(.5);
+    }
+    .item img.fruit{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

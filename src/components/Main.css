@@ -1,0 +1,264 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    
+}
+.logo {
+    font-family: 'Arial', serif; /* Classy serif font */
+    font-size: 3rem; /* Increase font size for more impact */
+    font-weight: 700; /* Bold weight for strong visual presence */
+    color: #3a2c22; /* Darker, richer brown for a more elegant look */
+    letter-spacing: 0.15em; /* Slightly more letter spacing for sophistication */
+    text-transform: uppercase; /* Uppercase for a brand-like feel */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Deeper shadow for more depth */
+    margin-top: 30px; /* Adds margin from the top */
+    margin-left: 0.1px; /* Shifts the logo slightly to the left */
+    padding: 10px; /* Padding to create space around the logo */
+    display: inline-block; /* Keeps the logo in place */
+  }
+
+header{
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(50px);
+    
+}
+header ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.carousel{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: -50px;
+}
+
+.list{
+    width: 100%;
+    height: 100%;
+}
+
+.item{
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: none;
+}
+.item img.fruit{
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    pointer-events: none;
+}
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 12rem;
+    color: #eee;
+    font-weight: bold;
+    font-family: system-ui;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.item.active{
+    display: block;
+}
+.item.hidden{
+    display: block;
+    pointer-events: none;
+    background-color: transparent;
+    z-index: 1;
+}
+
+
+#prev,
+#next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #eee9;
+    background-color: #eee5;
+    color: #eee;
+    font-size: x-large;
+    font-family: monospace;
+    cursor: pointer;
+    z-index: 15;
+}
+#prev{
+    left: 20px;
+}
+#next{
+    right: 20px;
+}
+
+
+@keyframes toActive{
+    from{
+        top: 100%;
+        opacity: 0;
+    }
+}
+@keyframes toOut{
+    from{
+        top: 50%;
+        opacity: 1;
+    }
+}
+.item.active img.fruit{
+    animation: toActive 0.5s ease-in-out 1;
+}
+.item.hidden img.fruit{
+    animation: toOut 0.8s ease-in-out 1;
+    top: -100%;
+    opacity: 0;
+}
+.item.active .content{
+    animation: toActive 0.8s ease-in-out 1;
+}
+.item.hidden .content{
+    opacity: 0;
+}
+
+
+.carousel.right .item.active img.fruit{
+    animation: toActivePrev 0.5s ease-in-out 1;
+}
+.carousel.right .item.hidden img.fruit{
+    animation: toOut 0.8s ease-in-out 1;
+    top: 100%;
+    opacity: 0;
+}
+.carousel.right .item.active .content{
+    animation: toActivePrev 0.8s ease-in-out 1;
+}
+
+
+@keyframes toActivePrev{
+    from{
+        top: 0;
+        opacity: 0;
+    }
+}
+
+
+
+
+
+:root{
+    --width-mockup: calc(371px / 1.5);
+    --height-mockup: calc(673px / 1.5);
+}
+
+.mockup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    --left: 0%;
+    transform: translate(-50%, -50%);
+    height: var(--height-mockup);
+    width: var(--width-mockup);
+    background: 
+        url('mockup.png')  0 0 no-repeat, 
+        url('listsoda1.png') var(--left) 0;
+    background-size: auto 100%;
+    background-blend-mode: multiply;
+    -webkit-mask-image: url('mockup.png');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: auto 100%;
+    transition: background 0.5s ease-in-out;
+}
+
+.leaves{
+    position: absolute;
+    width: 1200px;
+    height: 1200px;
+    background-image: url('splash.png');
+    background-size: 100%;
+    top: calc((55% - (var(--height-mockup) / 1)));
+    left: calc((2% + (var(--width-mockup) / 1)));
+}
+.shadow{
+    width: var(--width-mockup);
+    height: 100px;
+    background-color: #0008;
+    border-radius: 50%;
+    position: absolute;
+    top:  calc((50% + (var(--height-mockup) / 2)));
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(20px);
+}
+@media screen and (max-width: 768px) {
+    .item .content{
+        transform: translate(-50%, -50%) scale(.5);
+    }
+    .item img.fruit{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.auth-buttons {
+    padding-top: 20px;
+    display: flex;                    /* Align buttons in a row */
+    justify-content: center;          /* Center buttons horizontally */
+    gap: 15px;                        /* Space between buttons */
+    margin-top: 10px;                /* Space above the buttons */
+}
+
+.auth-buttons button {
+    
+    font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+    padding: 10px 18px;              /* Button padding */
+    font-size: 1.1rem;                 /* Font size */
+    border: none;                    /* Remove default border */
+    border-radius: 5px;              /* Rounded corners */
+    background-color: #ff0000;      /* Button background color */
+    color: white;                    /* Text color */
+    cursor: pointer;                 /* Change cursor to pointer on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.auth-buttons button:hover {
+    background-color: #00b37d;       /* Darker blue on hover */
+    transform: translateY(-2px);    /* Lift effect on hover */
+}
+
+.auth-buttons button:active {
+    background-color: #004494;       /* Even darker on click */
+    transform: translateY(0);        /* Reset lift effect */
+}
