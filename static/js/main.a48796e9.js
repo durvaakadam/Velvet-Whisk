@@ -1,2 +1,0 @@
-"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/service-worker.js").then((e=>{console.log("Service Worker registered successfully:",e)})).catch((e=>{console.error("Service Worker registration failed:",e)}))}));
-//# sourceMappingURL=main.a48796e9.js.map

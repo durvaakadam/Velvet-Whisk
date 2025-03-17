@@ -1,0 +1,2 @@
+"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/Velvet-Whisk/service-worker.js").then((e=>{console.log("Service Worker registered successfully:",e)})).catch((e=>{console.error("Service Worker registration failed:",e)}))}));
+//# sourceMappingURL=main.1f897238.js.map
