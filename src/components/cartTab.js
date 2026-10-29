@@ -16,6 +16,12 @@ const CartTab = () => {
   };
 
   const handleCheckout = () => {
+    // Prevent checkout when the cart is empty
+    if (!carts || carts.length === 0) {
+        alert("Your cart is empty! Please add items before checkout.");
+        return;
+    }
+
     const cartItemsWithDetails = carts.map(item => {
         const productDetail = products.find(product => product.id === item.productId);
         const price = productDetail ? productDetail.price : 0; 
