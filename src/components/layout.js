@@ -10,8 +10,11 @@ const Layout = () => {
 
     return (
         <div className='bg-zinc-200'>
-            <main className={`w-[1200px] max-w-full m-auto p-5 transform transition-transform duration-500
-            ${statusTabCart === false ? "" : "-translate-x-56" }`}>
+            <main
+    className={`w-full max-w-[1200px] m-auto p-5 box-border
+    transition-transform duration-300
+    ${statusTabCart === false ? "" : "lg:-translate-x-28"}`}
+>
                 <Header />
                 <Outlet />
                 <CookieConsent /> 
